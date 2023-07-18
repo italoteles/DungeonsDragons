@@ -1,8 +1,4 @@
 
-  .games {
-    flex: 2;
-  }
-
 .status {
   margin-bottom: 3rem;
 }
@@ -24,13 +20,13 @@
   display: flex;
   flex-direction: column;
   // justify-content: space-evenly;
-  width: 100%;
+  // width: 80%;
 }
 
 .card {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  // width: 80%;
   background: linear-gradient(
     to left top,
     rgba(255, 255, 255, 0.8),
