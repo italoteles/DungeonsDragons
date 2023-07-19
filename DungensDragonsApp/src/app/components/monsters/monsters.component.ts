@@ -9,6 +9,7 @@ import { MonstersService } from 'src/app/services/monsters.service';
 })
 export class MonstersComponent {
   public monsterList: MonsterList = {} as MonsterList;
+  p: number = 1;
 
   constructor(private monstersService: MonstersService) {}
 
