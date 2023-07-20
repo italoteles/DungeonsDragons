@@ -28,4 +28,8 @@ export class MonstersComponent {
       }
     });
   }
+
+  public meuMetodo(event : any) : void {
+    this.p = event;
+  }
 }

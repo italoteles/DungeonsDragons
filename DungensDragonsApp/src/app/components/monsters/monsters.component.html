@@ -11,35 +11,8 @@
         <p>Subclasses: Thief</p>
       </div>
     </div>
-    <!-- <div class="card">
-      <img src="./assets/Images/sackboy.png" alt="" />
-      <div class="card-info">
-        <h2>Sorcerer</h2>
-        <p>Subclasses: Draconic</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="./assets/Images/spiderman.png" alt="" />
-      <div class="card-info">
-        <h2>Barbarian</h2>
-        <p>Subclasses: Berserker</p>
-      </div>
-    </div> -->
-    <!--
-      <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav>
-  -->
-    <pagination-controls (pageChange)="p = $event" class="pagination justify-content-center text-primary"></pagination-controls>
+
+    <!-- <pagination-controls (pageChange)="p = $event" class="pagination justify-content-center text-primary"></pagination-controls> -->
+    <pagination-controls (pageChange)="meuMetodo($event)" class="pagination justify-content-center text-primary"></pagination-controls>
   </div>
 </div>
