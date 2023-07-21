@@ -4,6 +4,7 @@ import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { PaginatedResult } from '../models/PaginatedResult';
 import { MonsterList } from '../models/monsters/MonsterList';
+import { Monster } from '../models/monsters/Monster';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,16 @@ export class MonstersService {
 
 constructor(private http : HttpClient) { }
 
-public getMonsters(page? :number, itemsPerPage? : number, term? : string) : Observable<MonsterList>{
+public getMonsters(term? : string) : Observable<MonsterList>{
 
     return this.http.get<MonsterList>(this.baseURL).pipe(take(1));
 }
+
+public getMonstersDetails(monsterIndex : string) : Observable<Monster>{
+
+    return this.http.get<Monster>(this.baseURL+'/'+monsterIndex).pipe(take(1));
+}
+
+
 
 }

@@ -4,15 +4,15 @@
     <input type="text" placeholder="Search here..." />
   </div>
   <div class="cards">
-    <div class="card" *ngFor="let monsterResult of monsterList.results | paginate: { itemsPerPage: 3, currentPage: p }">
-      <img src="./assets/Images/assassins.png" alt="" />
+    <div class="card" *ngFor="let monsterResult of monsterList.results | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
+      <img [src]="" alt="" style="width: 100 px; height: 100px;"/>
       <div class="card-info">
         <h2>{{monsterResult.name}}</h2>
-        <p>Subclasses: Thief</p>
+        <p>Type: {{monsterDetailList[indexMonsterDetailList].type}}</p>
       </div>
     </div>
 
-    <!-- <pagination-controls (pageChange)="p = $event" class="pagination justify-content-center text-primary"></pagination-controls> -->
-    <pagination-controls (pageChange)="meuMetodo($event)" class="pagination justify-content-center text-primary"></pagination-controls>
+
+    <pagination-controls (pageChange)="loadMonsterDetail($event)" class="pagination justify-content-center text-primary"></pagination-controls>
   </div>
 </div>

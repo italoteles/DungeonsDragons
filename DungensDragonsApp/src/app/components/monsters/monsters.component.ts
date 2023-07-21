@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Monster } from 'src/app/models/monsters/Monster';
 import { MonsterList } from 'src/app/models/monsters/MonsterList';
 import { Result } from 'src/app/models/monsters/Result';
 import { MonstersService } from 'src/app/services/monsters.service';
@@ -10,8 +11,10 @@ import { MonstersService } from 'src/app/services/monsters.service';
 })
 export class MonstersComponent {
   public monsterList: MonsterList = {} as MonsterList;
-  p: number = 1;
-  numberPerPages : number = 5;
+  public p: number = 1;
+  public numberPerPages: number = 3;
+  public monsterDetailList: Monster[] = [];
+  public indexMonsterDetailList : number = 0;
 
   constructor(private monstersService: MonstersService) {}
 
@@ -19,39 +22,62 @@ export class MonstersComponent {
     this.loadMonsters();
   }
 
+
   public loadMonsters() {
     this.monstersService.getMonsters().subscribe({
-      next: (monsterListReturned : MonsterList) => {
+      next: (monsterListReturned: MonsterList) => {
         this.monsterList = monsterListReturned;
-        // console.log("contador de monstrossssssss=========" + this.monsterList.count + this.monsterList.results[1].name)
       },
       error: (error: any) => {
         console.error(error);
-      }
+      },
+      complete: () => {
+        let monsterListSliced: Result[] = this.monsterList.results.slice(0,3);
+
+        monsterListSliced.forEach((monster) => {
+          console.log('Nome do primeiro=' + monster.name);
+
+          this.monstersService.getMonstersDetails(monster.index).subscribe({
+            next: (monsterReturned: Monster) => {
+              this.monsterDetailList.push(monsterReturned);
+            },
+            error: (error: any) => {
+              console.error(error);
+            },
+          });
+        });
+      },
     });
   }
 
-  public meuMetodo(event : any) : void {
+  public loadMonsterDetail(event: any): void {
     this.p = event;
+    this.monsterDetailList = []
 
-    // let totalPages = Math.ceil(this.monsterList.results.length / 3);
-    let startArray : number = 0;
-    let endArray : number = 0;
+    let startArray: number = 0;
+    let endArray: number = 0;
 
+    endArray = this.p * this.numberPerPages - 1;
+    startArray = this.p * this.numberPerPages - this.numberPerPages;
 
-    endArray  = (this.p * this.numberPerPages) - 1;
-    startArray  = (this.p * this.numberPerPages) - this.numberPerPages;
+    let monsterListSliced: Result[] = this.monsterList.results.slice(
+      startArray,
+      endArray + 1
+    );
 
-    let monsterListDetails : Result[] = this.monsterList.results.slice(startArray,endArray+1);
+    monsterListSliced.forEach((monster) => {
+      console.log('Nome do primeiro=' + monster.name);
 
+      this.monstersService.getMonstersDetails(monster.index).subscribe({
+        next: (monsterReturned: Monster) => {
+          this.monsterDetailList.push(monsterReturned);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    });
 
-    console.log("Página=" + this.p);
-    console.log("Início=" + startArray);
-    console.log("Fim=" + endArray);
-    console.log(monsterListDetails);
-    console.log("Nome do primeiro=" + monsterListDetails[0].name);
-    console.log("Nome do ultimo=" + monsterListDetails[2].name);
-
-
+    console.log("monsterDetailList===" + this.monsterDetailList[0].name)
   }
 }
