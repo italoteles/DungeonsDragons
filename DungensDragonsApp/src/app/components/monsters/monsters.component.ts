@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MonsterList } from 'src/app/models/monsters/MonsterList';
+import { Result } from 'src/app/models/monsters/Result';
 import { MonstersService } from 'src/app/services/monsters.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { MonstersService } from 'src/app/services/monsters.service';
 export class MonstersComponent {
   public monsterList: MonsterList = {} as MonsterList;
   p: number = 1;
+  numberPerPages : number = 5;
 
   constructor(private monstersService: MonstersService) {}
 
@@ -31,5 +33,25 @@ export class MonstersComponent {
 
   public meuMetodo(event : any) : void {
     this.p = event;
+
+    // let totalPages = Math.ceil(this.monsterList.results.length / 3);
+    let startArray : number = 0;
+    let endArray : number = 0;
+
+
+    endArray  = (this.p * this.numberPerPages) - 1;
+    startArray  = (this.p * this.numberPerPages) - this.numberPerPages;
+
+    let monsterListDetails : Result[] = this.monsterList.results.slice(startArray,endArray+1);
+
+
+    console.log("Página=" + this.p);
+    console.log("Início=" + startArray);
+    console.log("Fim=" + endArray);
+    console.log(monsterListDetails);
+    console.log("Nome do primeiro=" + monsterListDetails[0].name);
+    console.log("Nome do ultimo=" + monsterListDetails[2].name);
+
+
   }
 }
