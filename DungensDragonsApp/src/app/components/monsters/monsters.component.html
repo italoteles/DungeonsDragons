@@ -5,14 +5,18 @@
   </div>
   <div class="cards">
     <div class="card" *ngFor="let monsterResult of monsterList.results | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
-      <img [src]="" alt="" style="width: 100 px; height: 100px;"/>
-      <div class="card-info">
-        <h2>{{monsterResult.name}}</h2>
-        <p>Type: {{monsterDetailList[indexMonsterDetailList].type}}</p>
+
+      <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
+      <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image == null)" src="./assets/Images/no-image.png" alt="" style="width: 100 px; height: 100px;"/>
+      <div *ngIf="monsterDetailList[i]" class="card-info">
+        <h2>{{monsterDetailList[i].name}}</h2>
+        <p>Type: {{monsterDetailList[i].type}}</p>
+        <p>Hit Points: {{monsterDetailList[i].hit_points}}</p>
+
       </div>
     </div>
 
 
-    <pagination-controls (pageChange)="loadMonsterDetail($event)" class="pagination justify-content-center text-primary"></pagination-controls>
+    <pagination-controls (pageChange)="pageChange($event)" class="pagination justify-content-center text-primary"></pagination-controls>
   </div>
 </div>

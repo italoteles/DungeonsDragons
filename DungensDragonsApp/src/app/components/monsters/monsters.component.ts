@@ -35,7 +35,6 @@ export class MonstersComponent {
         let monsterListSliced: Result[] = this.monsterList.results.slice(0,3);
 
         monsterListSliced.forEach((monster) => {
-          console.log('Nome do primeiro=' + monster.name);
 
           this.monstersService.getMonstersDetails(monster.index).subscribe({
             next: (monsterReturned: Monster) => {
@@ -50,7 +49,7 @@ export class MonstersComponent {
     });
   }
 
-  public loadMonsterDetail(event: any): void {
+  public pageChange(event: any): void {
     this.p = event;
     this.monsterDetailList = []
 
@@ -60,13 +59,10 @@ export class MonstersComponent {
     endArray = this.p * this.numberPerPages - 1;
     startArray = this.p * this.numberPerPages - this.numberPerPages;
 
-    let monsterListSliced: Result[] = this.monsterList.results.slice(
-      startArray,
-      endArray + 1
-    );
+    let monsterListSliced: Result[] = this.monsterList.results.slice(startArray,endArray + 1);
 
     monsterListSliced.forEach((monster) => {
-      console.log('Nome do primeiro=' + monster.name);
+
 
       this.monstersService.getMonstersDetails(monster.index).subscribe({
         next: (monsterReturned: Monster) => {
@@ -78,6 +74,6 @@ export class MonstersComponent {
       });
     });
 
-    console.log("monsterDetailList===" + this.monsterDetailList[0].name)
+
   }
 }
