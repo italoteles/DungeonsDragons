@@ -18,6 +18,7 @@ export class MonstersComponent {
   public indexMonsterDetailList : number = 0;
   public visible : boolean = false;
   public isBlur : boolean = false;
+  public unit : string = "";
 
   constructor(private monstersService: MonstersService) {}
 

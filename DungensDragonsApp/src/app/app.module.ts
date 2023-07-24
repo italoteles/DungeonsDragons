@@ -5,6 +5,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ProgressBarModule } from 'primeng/progressbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { MonstersComponent } from './components/monsters/monsters.component';
     NgxPaginationModule,
     DialogModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

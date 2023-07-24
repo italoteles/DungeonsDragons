@@ -25,13 +25,13 @@
       <span class="fs-3">{{monsterDetailList[indexMonsterDetailList].name}}</span>
     </ng-template>
       <p>Type: {{monsterDetailList[indexMonsterDetailList].type}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].languages}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].hit_points}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].strength}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].dexterity}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].constitution}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].intelligence}}</p>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].charisma}}</p>
+      <p>Languages: {{monsterDetailList[indexMonsterDetailList].languages}}</p>
+      <p><span style="color: red ;font-size: 1.2rem">Hit Points: {{monsterDetailList[indexMonsterDetailList].hit_points}}</span>  </p>
+      <p>Strength: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].strength" [unit]="unit"></p-progressBar></p>
+      <p>Dexterity: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].dexterity" [unit]="unit"></p-progressBar></p>
+      <p>Constitution: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].constitution" [unit]="unit"></p-progressBar></p>
+      <p>Intelligence: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].intelligence" [unit]="unit"></p-progressBar></p>
+      <p>Charisma: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].charisma" [unit]="unit"></p-progressBar></p>
 
 
     <ng-template pTemplate="footer">
