@@ -3,7 +3,7 @@
     <h1>Monsters</h1>
     <input type="text" placeholder="Search here..." />
   </div>
-  <div class="cards">
+  <div class="cards" [ngClass]="isBlur ? 'cards-blur': ''">
     <div class="card" *ngFor="let monsterResult of monsterList.results | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
 
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
@@ -11,12 +11,34 @@
       <div *ngIf="monsterDetailList[i]" class="card-info">
         <h2>{{monsterDetailList[i].name}}</h2>
         <p>Type: {{monsterDetailList[i].type}}</p>
-        <p>Hit Points: {{monsterDetailList[i].hit_points}}</p>
+
+      </div>
+      <div class="show-details">
+        <p-button (click)="showDialog(i)" icon="pi pi-search" label="Details"></p-button>
 
       </div>
     </div>
 
-
-    <pagination-controls (pageChange)="pageChange($event)" class="pagination justify-content-center text-primary"></pagination-controls>
   </div>
+  <p-dialog *ngIf="monsterDetailList[indexMonsterDetailList]" header="Header" [(visible)]="visible" [style]="{ width: '20vw' } " [draggable] = 'false' [modal]="true" (onHide)="endBlur($event)">
+    <ng-template pTemplate="header">
+      <span class="fs-3">{{monsterDetailList[indexMonsterDetailList].name}}</span>
+    </ng-template>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].type}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].languages}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].hit_points}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].strength}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].dexterity}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].constitution}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].intelligence}}</p>
+      <p>Type: {{monsterDetailList[indexMonsterDetailList].charisma}}</p>
+
+
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="visible = false ; isBlur = false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+    </p-dialog>
+
+
+  <pagination-controls (pageChange)="pageChange($event)" class="pagination justify-content-center text-primary"></pagination-controls>
 </div>

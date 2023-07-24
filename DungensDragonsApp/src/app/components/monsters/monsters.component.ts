@@ -4,6 +4,7 @@ import { MonsterList } from 'src/app/models/monsters/MonsterList';
 import { Result } from 'src/app/models/monsters/Result';
 import { MonstersService } from 'src/app/services/monsters.service';
 
+
 @Component({
   selector: 'app-monsters',
   templateUrl: './monsters.component.html',
@@ -15,6 +16,8 @@ export class MonstersComponent {
   public numberPerPages: number = 3;
   public monsterDetailList: Monster[] = [];
   public indexMonsterDetailList : number = 0;
+  public visible : boolean = false;
+  public isBlur : boolean = false;
 
   constructor(private monstersService: MonstersService) {}
 
@@ -73,7 +76,15 @@ export class MonstersComponent {
         }
       });
     });
+  }
 
+  public showDialog(i : number) : void {
+    this.visible = true;
+    this.indexMonsterDetailList = i;
+    this.isBlur = true;
+  }
 
+  public endBlur(e : Event) : void {
+    this.isBlur = false;
   }
 }

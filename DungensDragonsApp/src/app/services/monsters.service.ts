@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { PaginatedResult } from '../models/PaginatedResult';
+
 import { MonsterList } from '../models/monsters/MonsterList';
 import { Monster } from '../models/monsters/Monster';
 
