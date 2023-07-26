@@ -5,6 +5,7 @@ import { Result } from 'src/app/models/monsters/Result';
 import { MonstersService } from 'src/app/services/monsters.service';
 
 
+
 @Component({
   selector: 'app-monsters',
   templateUrl: './monsters.component.html',
@@ -19,6 +20,7 @@ export class MonstersComponent {
   public visible : boolean = false;
   public isBlur : boolean = false;
   public unit : string = "";
+  public searchValue : string = "";
 
   constructor(private monstersService: MonstersService) {}
 
@@ -88,4 +90,6 @@ export class MonstersComponent {
   public endBlur(e : Event) : void {
     this.isBlur = false;
   }
+
+
 }

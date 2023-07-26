@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ClassesComponent } from './components/classes/classes.component';
 import { MonstersComponent } from './components/monsters/monsters.component';
+import { FilterMonsterPipe } from './pipes/FilterMonster.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { MonstersComponent } from './components/monsters/monsters.component';
     AppComponent,
     SidebarComponent,
     ClassesComponent,
-    MonstersComponent
+    MonstersComponent,
+    FilterMonsterPipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { MonstersComponent } from './components/monsters/monsters.component';
     DialogModule,
     ButtonModule,
     BrowserAnimationsModule,
-    ProgressBarModule
+    ProgressBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

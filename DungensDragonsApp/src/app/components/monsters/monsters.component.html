@@ -1,10 +1,11 @@
 <div class="games">
   <div class="status">
     <h1>Monsters</h1>
-    <input type="text" placeholder="Search here..." />
+    <input type="text" name="seach" placeholder="Search here..." [(ngModel)]="searchValue">
+
   </div>
   <div class="cards" [ngClass]="isBlur ? 'cards-blur': ''">
-    <div class="card" *ngFor="let monsterResult of monsterList.results | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
+    <div class="card" *ngFor="let monsterResult of monsterList.results | FilterMonterPipe: searchValue | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
 
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image == null)" src="./assets/Images/no-image.png" alt="" style="width: 100 px; height: 100px;"/>
