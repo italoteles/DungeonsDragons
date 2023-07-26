@@ -44,6 +44,37 @@ export class ClassesComponent implements OnInit {
 
   }
 
+  public getStartingEquipment(classDD : string) : string{
+
+    let equipmentsString : string = "";
+    let filteredClass : DDClass[] = [];
+    filteredClass = this.classList.filter(element => element.index == classDD);
+
+    if (filteredClass[0].starting_equipment.length){
+
+      filteredClass[0].starting_equipment.forEach(equipment => {
+
+        if (equipmentsString == "")
+        {
+          equipmentsString = equipment.equipment.name ;
+
+        }
+        else {
+          equipmentsString = equipmentsString + ", " + equipment.equipment.name ;
+        }
+      });
+
+    }
+    else
+    {
+
+      equipmentsString = "No equipment";
+    }
+    return equipmentsString;
+  }
+
+
+
 
   public pageChange(event: any): void {
     this.p = event;

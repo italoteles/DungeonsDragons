@@ -10,7 +10,7 @@
       <img src="./assets/Images/Classes/{{classDD.index}}.png" alt="" />
       <div class="card-info">
         <h2 *ngIf="classDD">{{classDD.name}}</h2>
-        <p>Starting Equipment: {{classDD.starting_equipment}} </p>
+        <p>Starting Equipment: {{getStartingEquipment(classDD.index)}} </p>
       </div>
 
     </div>
