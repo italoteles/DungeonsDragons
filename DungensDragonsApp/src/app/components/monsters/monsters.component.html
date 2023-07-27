@@ -9,9 +9,14 @@
 
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image == null)" src="./assets/Images/no-image.png" alt="" style="width: 100 px; height: 100px;"/>
+      <div *ngIf="monsterResult" class="card-info">
+        <h2>{{monsterResult.name}}</h2>
+        <p>Type: {{monsterDetailList[i].type}}</p>
+      <!-- <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
+      <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image == null)" src="./assets/Images/no-image.png" alt="" style="width: 100 px; height: 100px;"/>
       <div *ngIf="monsterDetailList[i]" class="card-info">
         <h2>{{monsterDetailList[i].name}}</h2>
-        <p>Type: {{monsterDetailList[i].type}}</p>
+        <p>Type: {{monsterDetailList[i].type}}</p> -->
 
       </div>
       <div class="show-details">
