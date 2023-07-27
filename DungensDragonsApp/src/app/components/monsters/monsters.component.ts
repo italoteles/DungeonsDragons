@@ -21,6 +21,7 @@ export class MonstersComponent {
   public isBlur : boolean = false;
   public unit : string = "";
   public searchValue : string = "";
+  public monsterModal!: Monster;
 
   constructor(private monstersService: MonstersService) {}
 
@@ -81,10 +82,20 @@ export class MonstersComponent {
     });
   }
 
-  public showDialog(i : number) : void {
+  public showDialog(index : string) : void {
+
     this.visible = true;
-    this.indexMonsterDetailList = i;
+    // this.indexMonsterDetailList = i;
+    this.monstersService.getMonstersDetails(index).subscribe({
+      next: (monsterReturned: Monster) => {
+        this.monsterModal = monsterReturned;
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
     this.isBlur = true;
+
   }
 
   public endBlur(e : Event) : void {

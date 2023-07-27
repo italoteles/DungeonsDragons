@@ -1,0 +1,20 @@
+<div class="games">
+  <div class="status">
+    <h1>Classes</h1>
+    <input type="text" name="seach" placeholder="Search here..." [(ngModel)]="searchValue">
+  </div>
+  <div class="cards">
+
+
+    <div class="card" *ngFor="let race of racesList | FilterRace: searchValue | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
+      <!-- <img src="./assets/Images/Classes/{{race.index}}.png" alt="" /> -->
+      <div class="card-info">
+        <h2 *ngIf="race">{{race.name}}</h2>
+        <p>Speed: {{race.speed}} </p>
+      </div>
+
+    </div>
+
+  </div>
+  <pagination-controls (pageChange)="pageChange($event)" class="pagination justify-content-center text-primary"></pagination-controls>
+</div>

@@ -5,7 +5,7 @@
 
   </div>
   <div class="cards" [ngClass]="isBlur ? 'cards-blur': ''">
-    <div class="card" *ngFor="let monsterResult of monsterList.results | FilterMonterPipe: searchValue | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
+    <div class="card" *ngFor="let monsterResult of monsterList.results | FilterMonsterPipe: searchValue | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
 
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image != null)" [src]="'https://www.dnd5eapi.co'+monsterDetailList[i].image" alt="" style="width: 100 px; height: 100px; align-self: center;"/>
       <img *ngIf="monsterDetailList[i] && (monsterDetailList[i].image == null)" src="./assets/Images/no-image.png" alt="" style="width: 100 px; height: 100px;"/>
@@ -20,24 +20,24 @@
 
       </div>
       <div class="show-details">
-        <p-button (click)="showDialog(i)" icon="pi pi-search" label="Details"></p-button>
+        <p-button (click)="showDialog(monsterResult.index)" icon="pi pi-search" label="Details"></p-button>
 
       </div>
     </div>
 
   </div>
-  <p-dialog *ngIf="monsterDetailList[indexMonsterDetailList]" header="Header" [(visible)]="visible" [style]="{ width: '20vw' } " [draggable] = 'false' [modal]="true" (onHide)="endBlur($event)">
+  <p-dialog *ngIf="monsterModal" header="Header" [(visible)]="visible" [style]="{ width: '20vw' } " [draggable] = 'false' [modal]="true" (onHide)="endBlur($event)">
     <ng-template pTemplate="header">
-      <span class="fs-3">{{monsterDetailList[indexMonsterDetailList].name}}</span>
+      <span class="fs-3">{{monsterModal.name}}</span>
     </ng-template>
-      <p>Type: {{monsterDetailList[indexMonsterDetailList].type}}</p>
-      <p>Languages: {{monsterDetailList[indexMonsterDetailList].languages}}</p>
-      <p><span style="color: red ;font-size: 1.2rem">Hit Points: {{monsterDetailList[indexMonsterDetailList].hit_points}}</span>  </p>
-      <p>Strength: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].strength" [unit]="unit"></p-progressBar></p>
-      <p>Dexterity: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].dexterity" [unit]="unit"></p-progressBar></p>
-      <p>Constitution: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].constitution" [unit]="unit"></p-progressBar></p>
-      <p>Intelligence: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].intelligence" [unit]="unit"></p-progressBar></p>
-      <p>Charisma: <p-progressBar [value]="monsterDetailList[indexMonsterDetailList].charisma" [unit]="unit"></p-progressBar></p>
+      <p>Type: {{monsterModal.type}}</p>
+      <p>Languages: {{monsterModal.languages}}</p>
+      <p><span style="color: red ;font-size: 1.2rem">Hit Points: {{monsterModal.hit_points}}</span>  </p>
+      <p>Strength: <p-progressBar [value]="monsterModal.strength" [unit]="unit"></p-progressBar></p>
+      <p>Dexterity: <p-progressBar [value]="monsterModal.dexterity" [unit]="unit"></p-progressBar></p>
+      <p>Constitution: <p-progressBar [value]="monsterModal.constitution" [unit]="unit"></p-progressBar></p>
+      <p>Intelligence: <p-progressBar [value]="monsterModal.intelligence" [unit]="unit"></p-progressBar></p>
+      <p>Charisma: <p-progressBar [value]="monsterModal.charisma" [unit]="unit"></p-progressBar></p>
 
 
     <ng-template pTemplate="footer">

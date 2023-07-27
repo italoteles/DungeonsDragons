@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Result } from '../models/monsters/Result';
 
 @Pipe({
-  name: 'FilterMonterPipe'
+  name: 'FilterMonsterPipe'
 })
 export class FilterMonsterPipe implements PipeTransform {
 
