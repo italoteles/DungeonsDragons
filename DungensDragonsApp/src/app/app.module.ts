@@ -15,6 +15,7 @@ import { ClassesComponent } from './components/classes/classes.component';
 import { MonstersComponent } from './components/monsters/monsters.component';
 import { FilterMonsterPipe } from './pipes/FilterMonster.pipe';
 import { FormsModule } from '@angular/forms';
+import { FilterClassPipe } from './pipes/FilterClass.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     ClassesComponent,
     MonstersComponent,
-    FilterMonsterPipe
+    FilterMonsterPipe,
+    FilterClassPipe
   ],
   imports: [
     BrowserModule,

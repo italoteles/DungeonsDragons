@@ -11,6 +11,7 @@ export class ClassesComponent implements OnInit {
 
   public classes : string[] = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard'];
   public classList : DDClass[] = [];
+  public searchValue : string = "";
 
   public p: number = 1;
   public numberPerPages: number = 3;

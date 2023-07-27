@@ -1,12 +1,12 @@
 <div class="games">
   <div class="status">
     <h1>Classes</h1>
-    <input type="text" placeholder="Search here..." />
+    <input type="text" name="seach" placeholder="Search here..." [(ngModel)]="searchValue">
   </div>
   <div class="cards">
 
 
-    <div class="card" *ngFor="let classDD of classList | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
+    <div class="card" *ngFor="let classDD of classList | FilterClass: searchValue | paginate: { itemsPerPage: numberPerPages, currentPage: p }; let i = index">
       <img src="./assets/Images/Classes/{{classDD.index}}.png" alt="" />
       <div class="card-info">
         <h2 *ngIf="classDD">{{classDD.name}}</h2>
