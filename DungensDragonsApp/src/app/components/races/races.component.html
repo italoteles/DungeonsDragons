@@ -1,6 +1,6 @@
 <div class="games">
   <div class="status">
-    <h1>Classes</h1>
+    <h1>Races</h1>
     <input type="text" name="seach" placeholder="Search here..." [(ngModel)]="searchValue">
   </div>
   <div class="cards">
@@ -11,6 +11,7 @@
       <div class="card-info">
         <h2 *ngIf="race">{{race.name}}</h2>
         <p>Speed: {{race.speed}} </p>
+        <p>Size: {{race.size}} </p>
       </div>
 
     </div>
